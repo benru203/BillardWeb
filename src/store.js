@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-
+    is_login:false
   },
   mutations: {
-
+    setLogin(state, data){
+      state.is_login = data;
+    }
   },
   actions: {
 

@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="col-12">
+    <div class="row justify-content-center">
+      <template v-for="(pool, index) in pools">
+        <pool :key="index"></pool>
+      </template>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+  import firebase from '../config.firebase'
+  let DB = firebase.database();
+  let Pools = DB.ref('pools');
 export default {
   name: 'home',
+  firebase:{
+    pools : Pools,
+  },
   components: {
-    HelloWorld
+    'pool': () => import('../components/Pool')
+  },
+  created(){
+  },
+  methods: {
   }
 }
 </script>
